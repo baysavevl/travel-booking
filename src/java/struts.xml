@@ -1,0 +1,156 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+        
+        <action name="index" class="vinhl.actions.FileUploadAction" method="index">   
+        <result name="success">insertTour.jsp</result>   
+       </action>   
+       <action name="perform-upload" class="vinhl.actions.FileUploadAction" method="performUpload">  
+         <interceptor-ref name="fileUpload">  
+           <param name="maximumSize">2000000</param>  
+           <param name="allowedTypes">  
+             image/png,video/*  
+           </param>  
+           <param name="allowedExtensions">  
+             .doc,.jar,.png,.mp4,.jpg  
+           </param>  
+         </interceptor-ref>   
+         <interceptor-ref name="defaultStack"></interceptor-ref>  
+         <result name="success">insertTour.jsp</result>  
+         <result name="input">insertTour.jsp</result>   
+         <result name="error">insertTour.jsp</result>   
+       </action>   
+        
+        <!-- TOUR -->
+        
+         
+        
+        <action name="searchTourAdminAction" class="vinhl.actions.SearchTourAdminAction">
+            <result name="success"> searchTourAdmin.jsp </result>    
+        </action>  
+        
+        <action name="searchTourUserAction" class="vinhl.actions.SearchTourAdminAction">
+            <result name="success"> searchTourUser.jsp </result>    
+        </action> 
+        
+         <action name="insertTourAction" class="vinhl.actions.InsertTourAction">
+            <result name="success"> admin.jsp </result>  
+            <result name="input"> insertTour.jsp </result>  
+            <result name="fail"> errorAdmin.jsp </result>   
+        </action> 
+        
+        <action name="editTourAction" class="vinhl.actions.EditTourAction">
+            <result name="success"> updateTour.jsp </result>  
+            <result name="fail"> errorAdmin.jsp </result>   
+        </action>
+        
+        <action name="updateTourAction" class="vinhl.actions.UpdateTourAction">
+            <result name="success"> searchTourAdmin.jsp </result>  
+            <result name="fail"> errorAdmin.jsp </result>   
+        </action>  
+        
+        <action name="deleteTourAction" class="vinhl.actions.DeleteTourAction">
+            <result name="success"> searchTourAdmin.jsp </result>  
+            <result name="fail"> errorAdmin.jsp </result>   
+        </action>
+        
+        <!-- USER -->
+        
+        
+        <action name="insertUserAction" class="vinhl.actions.InsertUserAction">
+            <result name="success"> index.jsp </result> 
+            <result name="input"> registration.jsp </result>  
+            <result name="fail"> registration.jsp </result>   
+        </action> 
+        
+        <action name="loginAction" class="vinhl.actions.LoginAction">
+            <result name="admin"> admin.jsp </result>
+            <result name="user">  user.jsp </result>
+            <result name="error"> error.jsp </result>
+        </action>   
+        
+        
+        <action name="searchUserAdminAction" class="vinhl.actions.SearchUserAdminAction">
+            <result name="success"> searchUserAdmin.jsp </result>    
+        </action>
+        
+        <action name="deleteUserAdminAction" class="vinhl.actions.DeleteUserAction">
+            <result name="success"> searchUserAdmin.jsp </result>    
+        </action>
+        
+        <action name="editUserAction" class="vinhl.actions.EditUserAction">
+            <result name="success"> updateInfoUser.jsp </result>    
+        </action>
+        
+        <action name="updateUserAction" class="vinhl.actions.UpdateUserAction">
+            <result name="success"> updateInfoUser.jsp </result>   
+            <result name="input"> updateInfoUser.jsp </result>   
+            <result name="fail"> errorUser.jsp </result> 
+        </action>
+        
+        
+        
+        <action name="editPasswordUserAction" class="vinhl.actions.EditPasswordUserAction">
+            <result name="success"> updatePasswordUser.jsp </result>    
+        </action>
+        
+        <action name="resetPasswordUserAction" class="vinhl.actions.ResetPasswordUserAction">
+            <result name="success"> updatePasswordUser.jsp </result>    
+            <result name="input"> updatePasswordUser.jsp </result>    
+        </action>
+        
+        <!-- BILL -->
+         <action name="addToCartAction" class="vinhl.actions.AddThisTourAction">
+            <result name="success"> addTourToCart.jsp </result>                
+        </action>
+        
+        
+        <action name="addThisToCartAction" class="vinhl.actions.AddThisToCartAction">
+            <result name="success"> searchTourUser.jsp </result>                
+                          
+            <result name="fail"> searchTourUser.jsp </result>                
+        </action>
+        
+        <action name="viewCartUserAction" class="vinhl.actions.ViewCartUserAction">
+            <result name="success"> viewCartUser.jsp </result>                
+                          
+            <result name="fail"> viewCartUser.jsp </result>                
+        </action>
+        
+        <action name="viewCartAdminAction" class="vinhl.actions.ViewCartUserAdminAction">
+            <result name="success"> viewCartUserAdmin.jsp </result>                
+                          
+            <result name="fail"> viewCartUserAdmin.jsp </result>                
+        </action>
+        
+        
+        
+        <action name="viewTourDetailUserAction" class="vinhl.actions.ViewTourDetailUserAction">
+            <result name="success"> viewTourDetailUser.jsp </result>                
+                          
+            <result name="fail"> viewCartUser.jsp </result>                
+        </action>
+        
+        <action name="editNumberCartAction" class="vinhl.actions.EditNumberCartAction">
+            <result name="success"> modifyTourUser.jsp </result>                                     
+        </action>
+        
+        <action name="modifyTourUserAction" class="vinhl.actions.ModifyTourUserAction">
+            <result name="success"> modifyTourUser.jsp </result>                                     
+        </action>
+        
+        <action name="removeFromCartAction" class="vinhl.actions.RemoveFromCartAction">
+            <result name="success"> viewCartUser.jsp </result>                                     
+        </action>
+        
+        
+        <action name="payTourAction" class="vinhl.actions.PayTourAction">
+            <result name="success"> viewCartUser.jsp </result>                                     
+        </action>
+        
+    </package>
+</struts>
